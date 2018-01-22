@@ -21,14 +21,9 @@ export class EditorMdDirective implements AfterViewInit {
     const out = this.onEditorChange;
     const textarea = $('#' + this.id + ' :first'); // 获取textarea元素
 
-    // 定义textarea的onChange事件
-    textarea.on('change', function () {
-      out.emit(textarea.val()); // 发射出textarea的最新值
-    });
-
     // 当编辑器内容改变时，触发textarea的change事件
     this.editor.on('change', function () {
-      textarea.trigger('change');
+      out.emit(textarea.val());
     });
   }
 }
